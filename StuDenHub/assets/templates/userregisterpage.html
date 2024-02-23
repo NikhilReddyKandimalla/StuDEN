@@ -1,0 +1,117 @@
+<style>
+    .login-section {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image:url('https://charlestonempowered.com/wp-content/uploads/2018/05/MMA-helpdesk1-e1527161111939.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        width: 300px;
+        background-color: rgba(95, 104, 104, 0.8);
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(170, 180, 170, 0.1);
+    }
+    input[type="text"], input[type="password"],input[type="tel"],input[type="email"],input[type="email"]   {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #0d0d0d;
+        border-radius: 3px;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #59ae9d;
+        border: none;
+        color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0f0f0f;
+    }
+    select[type="text"]  {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #0d0d0d;
+        border-radius: 3px;
+    }
+
+    .login-btn {
+        display: block;
+        margin: 0 auto;
+        background-color: rgba(0, 0, 0, 0.5); /* Set button background color to blue */
+        color: white; /* Set text color to white */
+        border: none; /* Remove button border */
+        padding: 10px 20px; /* Add padding to the button */
+        cursor: pointer; /* Change cursor to pointer on hover */
+        border-radius: 5px; /* Add border radius for rounded corners */
+    }
+</style>
+
+<!-- ======= Register Section ======= -->
+<section id="register" class="login-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Make a Registration</h2>
+        </div>
+
+        <form action="/userregisterAction/" method="post" class="form-vertical">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-control" name="mobile" id="phone" placeholder="Your Phone" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="studentid" class="form-control" id="studentid" placeholder="Student ID" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="city" id="city" placeholder="City" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="state" id="state" placeholder="State" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="pswd" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="confirm_pswd" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
+            </div>
+            <div class="form-group">
+                <select type="text" class="form-select" id="university" name="university">
+                    <option value="" selected disabled>Select University</option>
+                    <option value="UBC">UBC</option>
+                    <option value="FDU University">FDU University</option>
+                    <option value="NYIT University">NYIT University</option>
+                    <option value=" UCW"> UCW</option>
+                    <option value="Langara Institute of Technology">Langara Institute of Technology</option>                
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="country" class="form-control" id="country" placeholder="Country" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-light btn-lg login-btn" type="submit"><strong>Make a Registration</strong></button>
+            </div>
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                <font color='red'>{{ message }}</font>
+            {% endfor %}
+        {% endif %}
+    </div>
+</section><!-- End Register Section -->

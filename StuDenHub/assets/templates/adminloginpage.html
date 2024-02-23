@@ -1,0 +1,83 @@
+<style>
+    .login-section {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image:url('https://charlestonempowered.com/wp-content/uploads/2018/05/MMA-helpdesk1-e1527161111939.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        width: 300px;
+        background-color: rgba(95, 104, 104, 0.8);
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(170, 180, 170, 0.1);
+    }
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #0d0d0d;
+        border-radius: 3px;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #59ae9d;
+        border: none;
+        color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0f0f0f;
+    }
+
+    .login-btn {
+        display: block;
+        margin: 0 auto;
+        background-color: rgba(0, 0, 0, 0.5); /* Set button background color to blue */
+        color: white; /* Set text color to white */
+        border: none; /* Remove button border */
+        padding: 10px 20px; /* Add padding to the button */
+        cursor: pointer; /* Change cursor to pointer on hover */
+        border-radius: 5px; /* Add border radius for rounded corners */
+    }
+</style>
+
+
+<!-- ======= Login Section ======= -->
+<section id="login" class="login-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Make a ADMIN LOGIN</h2>
+        </div>
+
+        <form action="/adminloginaction/" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Admin" >
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                    <input type="password" class="form-control" name="password" id="phone" placeholder="Admin">
+                </div>
+            </div>
+            <br>
+            <div class="form-group mb-3">
+                <button class="btn btn-light btn-lg login-btn" type="submit" value="submit"><strong>Login</strong></button>
+            </div>
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                <font color='red'> {{ message }}</font>
+            {% endfor %}
+        {% endif %}
+    </div>
+</section><!-- End login Section -->
